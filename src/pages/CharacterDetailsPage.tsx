@@ -5,6 +5,12 @@ import {useGetCharacterByIdQuery, useGetFilmsByUrlsQuery} from '../hooks/useQuer
 const CharacterDetailsPage = () => {
     const params = useParams<{ [PERSON_ID_PARAM]?: string }>();
 
+    /**
+     * Could make use of context to fetch the Person's Info from the Home page, which will reduce the no of API calls
+     * TODO:
+     *  - Fetch Person's info from Reacts context API
+     *  - Make an API call, only if data is missing on context
+     * */
     const { data: person, isLoading: personLoading, error: personError } = useGetCharacterByIdQuery(params[PERSON_ID_PARAM]);
 
     const { data: films, error: filmsError, isLoading: filmsLoading } = useGetFilmsByUrlsQuery(person?.films ?? []);

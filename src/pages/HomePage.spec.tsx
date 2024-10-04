@@ -20,11 +20,9 @@ vi.mock('../hooks/useQuery', () => ({
 }));
 
 const mockNavigate = vi.fn();
-vi.mock('react-router-dom', () => {
-   return {
-       useNavigate: () => mockNavigate,
-   }
-});
+vi.mock('react-router-dom', () => ({
+    useNavigate: () => mockNavigate,
+}));
 
 describe('HomePage', () => {
 
